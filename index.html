@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Për pleren ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia, serif;
+    height:100vh;
+    background:linear-gradient(135deg,#111,#1c1c1c,#2b2b2b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    .couple-photo{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #d4af37;
+    margin-bottom:25px;
+    box-shadow:0 0 30px rgba(212,175,55,0.4);
+}
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.card{
+     position:relative;
+    z-index:2;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    padding:50px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    max-width:650px;
+    width:90%;
+}
+
+h1{
+    font-size:3rem;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.2rem;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+button{
+    background:#d4af37;
+    border:none;
+    padding:15px 35px;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="card">
+
+    <img src="photo.jpg" class="couple-photo">
+
+    <h1 id="title">Për pleren ❤️</h1>
+
+    <p id="text">
+        Kam përgatitur diçka të vogël për ty...
+        dhe më duhen vetëm pak minuta nga koha jote.
+    </p>
+
+    <button id="mainBtn" onclick="nextStep()">
+        Vazhdo 💖
+    </button>
+
+</div>
+
+<script>
+
+function nextStep(){let music = document.getElementById("bgMusic");
+music.volume = 0.20;
+music.play();
+
+document.getElementById("title").innerHTML =
+"Pler ❤️";
+
+document.getElementById("text").innerHTML = `
+A do të dalësh në një date me mua?<br><br>
+
+<button onclick="foodStep()">
+Po ❤️
+</button>
+
+<br><br>
+
+<button onclick="foodStep()">
+Sigurisht që po 😏
+</button>
+`;
+
+document.getElementById("mainBtn").style.display =
+"none";
+
+}
+
+function foodStep(){
+
+document.getElementById("title").innerHTML =
+"❤️";
+
+document.getElementById("text").innerHTML =
+"Hehehe normal qe po ";
+
+setTimeout(() => {
+
+document.getElementById("title").innerHTML =
+"Perfekte! 🍤";
+
+document.getElementById("text").innerHTML = `
+Çfarë do të kishe qejf të hanim?<br><br>
+
+<button onclick="chooseFood('Rizoto me karkaleca 🍤')">
+Rizoto me karkaleca 🍤
+</button>
+
+<br><br>
+
+<button onclick="chooseFood('Linguini me karkaleca 🍤')">
+Linguini me karkaleca 🍤
+</button>
+
+<br><br>
+
+<button onclick="chooseFood('Mish 🥩 ')">
+Mish 🥩
+</button>
+`;
+
+}, 2000);
+
+}
+
+function chooseFood(food){
+
+    document.getElementById("title").innerHTML =
+    " 😏😏😏😏 ";
+
+    document.getElementById("text").innerHTML =
+    `Zgjodhe: <b>${food}</b><br><br>
+    Tani vazhdojme me pjesën tjetër të mbrëmjes... ✨`;
+
+    setTimeout(() => {
+
+        document.getElementById("title").innerHTML =
+        "🥂";
+
+        document.getElementById("text").innerHTML = `
+        Me çfarë do që ta shoqërojmë darkën?<br><br>
+
+        <button onclick="chooseDrink('Cola')">
+        Cola 🥤
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseDrink('Vere')">
+        Verë 🍷
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseDrink('Uje')">
+        Ujë 💧
+        </button>
+        `;
+
+    }, 2000);
+
+}
+
+
+function chooseDrink(drink){
+
+    if(drink === 'Vere'){
+
+        document.getElementById("title").innerHTML =
+        "🍷😏";
+
+        document.getElementById("text").innerHTML =
+        `Nuk e zgjodhe kot veren...😝😝`;
+
+    }
+
+    else if(drink === 'Cola'){
+
+        document.getElementById("title").innerHTML =
+        "🥤";
+
+        document.getElementById("text").innerHTML =
+        `Zgjodhe Cola 🥤`;
+
+    }
+
+    else if(drink === 'Uje'){
+
+        document.getElementById("title").innerHTML =
+        "💧";
+
+        document.getElementById("text").innerHTML =
+        `Zgjodhe Ujë 💧`;
+
+    }
+
+    setTimeout(() => {
+        dateStep();
+    }, 2000);
+
+}
+
+
+function dateStep(){
+
+    document.getElementById("title").innerHTML =
+    "📅❤️";
+
+    document.getElementById("text").innerHTML = `
+        Tani duhet me vendos per daten... <br><br>
+
+        Kur po dalim? <br><br>
+
+        <input
+            type="date"
+            id="datePicker"
+            style="
+                padding:15px 20px;
+                border-radius:20px;
+                border:none;
+                font-size:18px;
+                text-align:center;
+                cursor:pointer;
+            "
+        >
+
+        <br><br>
+
+        <button onclick="chooseDate()">
+            Po ta le ty ne dore
+        </button>
+    `;
+}
+
+let chosenDate = "";
+function chooseDate(){
+
+    let selectedDate =
+    document.getElementById("datePicker").value;
+
+    if(selectedDate === ""){
+
+        alert("Zgjidh një datë 😝❤️");
+        return;
+
+    }
+
+    let date = new Date(selectedDate + "T00:00:00");
+
+    let formattedDate =
+    date.toLocaleDateString("sq-AL", {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    });
+    chosenDate = formattedDate;
+
+    document.getElementById("title").innerHTML =
+    "❤️📅❤️";
+
+    document.getElementById("text").innerHTML = `
+        U vendos atëherë... 😏❤️<br><br>
+
+        <b>${formattedDate}</b><br><br>
+
+        Ishalla nuk na e anullo mami😭😭
+    `;
+
+    setTimeout(() => {
+        outfitStep();
+    }, 2500);
+
+}
+
+
+function outfitStep(){
+
+    document.getElementById("title").innerHTML =
+    "👗😏";
+
+    document.getElementById("text").innerHTML = `
+        Po për veshjen? 😏<br><br>
+
+        <button onclick="chooseOutfit('Xhinse dhe croptop')">
+            Xhinse dhe croptop 👖
+        </button>
+
+        <br><br>
+
+        <button onclick="chooseOutfit('Fustan')">
+            Fustan 👗
+        </button>
+    `;
+}
+
+
+function chooseOutfit(outfit){
+
+    if(outfit === 'Fustan'){
+
+        document.getElementById("title").innerHTML =
+        "👗❤️";
+
+        document.getElementById("text").innerHTML = `
+            Po çfarë ngjyre? 👀<br><br>
+
+            <button onclick="chooseDressColor('Zi 🖤')">
+                Zi 🖤
+            </button>
+
+            <br><br>
+
+            <button onclick="chooseDressColor('Kafe 🤎')">
+                Kafe 🤎
+            </button>
+
+            <br><br>
+
+            <button onclick="chooseDressColor('Ngjyrë tjetër 🎨')">
+                Ngjyrë tjetër 🎨
+            </button>
+        `;
+
+    } else {
+
+        document.getElementById("title").innerHTML =
+        "😏❤️";
+
+        document.getElementById("text").innerHTML = `
+            Zgjodhe: <b>${outfit}</b>
+        `;
+
+        setTimeout(() => {
+            finalMessage();
+        }, 2500);
+    }
+
+}
+
+
+function chooseDressColor(color){
+
+    document.getElementById("title").innerHTML =
+    "👗😏❤️";
+
+    document.getElementById("text").innerHTML = `
+        Ma nis ne whatsapp cfar do veshesh😋</b>
+    `;
+
+    setTimeout(() => {
+        finalMessage();
+    }, 2500);
+
+}
+
+
+function finalMessage(){
+
+    document.getElementById("title").innerHTML =
+    "❤️‍🔥❤️‍🔥";
+
+    document.getElementById("text").innerHTML = `
+        Bukur ateher,<br><br>
+
+        Le te jete <b>${chosenDate}</b> nje nga mbremjet tona me te bukura,<br><br>
+
+        Mezi po pres te te shof 🫶
+    `;
+
+    startKisses();
+}
+
+
+function startKisses(){
+
+    setInterval(() => {
+
+        let kiss = document.createElement("div");
+
+        kiss.innerHTML = "💋";
+
+        kiss.style.position = "fixed";
+        kiss.style.left = Math.random() * 100 + "vw";
+        kiss.style.bottom = "-50px";
+        kiss.style.fontSize = (15 + Math.random() * 25) + "px";
+        kiss.style.zIndex = "1";
+        kiss.style.pointerEvents = "none";
+        kiss.style.opacity = "0.8";
+        kiss.style.transition = "all 5s linear";
+
+        document.body.appendChild(kiss);
+
+        setTimeout(() => {
+
+            kiss.style.bottom = "110vh";
+            kiss.style.transform =
+            "rotate(" + (Math.random() * 360) + "deg)";
+
+            kiss.style.opacity = "0";
+
+        }, 100);
+
+        setTimeout(() => {
+            kiss.remove();
+        }, 5200);
+
+    }, 350);
+
+}
+    
+</script>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
